@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neelofer Hilal | Product Manager & Innovator</title>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg:       #0a0f1e;
+      --bg2:      #0f172a;
+      --bg3:      #1e293b;
+      --accent:   #818cf8;
+      --accent2:  #c084fc;
+      --gold:     #f59e0b;
+      --muted:    #64748b;
+      --subtle:   #94a3b8;
+      --white:    #f8fafc;
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: var(--bg);
+      color: var(--white);
+      line-height: 1.65;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+      background: rgba(10,15,30,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(129,140,248,0.15);
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 3rem;
+    }
+    nav .logo {
+      font-weight: 800; font-size: 1.1rem; letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #818cf8, #c084fc);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    nav ul { list-style: none; display: flex; gap: 2rem; }
+    nav ul a {
+      color: var(--subtle); text-decoration: none; font-size: 0.875rem;
+      font-weight: 500; transition: color 0.2s;
+    }
+    nav ul a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 7rem 3rem 5rem;
+      background:
+        radial-gradient(ellipse 80% 60% at 70% 40%, rgba(129,140,248,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 50% at 20% 80%, rgba(192,132,252,0.08) 0%, transparent 60%),
+        var(--bg);
+    }
+    .hero-inner {
+      max-width: 1200px; margin: 0 auto; width: 100%;
+      display: grid; grid-template-columns: 1fr 420px; gap: 5rem; align-items: center;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(129,140,248,0.12);
+      border: 1px solid rgba(129,140,248,0.35);
+      color: var(--accent); font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 0.35rem 1rem; border-radius: 100px; margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 3.75rem);
+      font-weight: 900; line-height: 1.08; letter-spacing: -0.03em; margin-bottom: 0.75rem;
+    }
+    .hero h1 .grad {
+      background: linear-gradient(135deg, #818cf8 0%, #c084fc 50%, #f472b6 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero .subtitle {
+      font-size: 1.15rem; color: var(--subtle); margin-bottom: 1.25rem; font-weight: 500;
+    }
+    .hero .bio-short {
+      font-size: 0.975rem; color: var(--muted); max-width: 520px; margin-bottom: 2rem; line-height: 1.75;
+    }
+    .pill-row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2.5rem; }
+    .pill {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+      color: var(--subtle); font-size: 0.78rem; padding: 0.3rem 0.85rem; border-radius: 100px;
+    }
+    .cta-row { display: flex; gap: 1rem; }
+    .btn {
+      padding: 0.8rem 2rem; border-radius: 10px; font-weight: 700;
+      font-size: 0.9rem; text-decoration: none; transition: all 0.25s; display: inline-block;
+    }
+    .btn-fill {
+      background: linear-gradient(135deg, #6366f1, #a855f7);
+      color: white;
+    }
+    .btn-fill:hover { opacity: 0.88; transform: translateY(-2px); }
+    .btn-outline {
+      border: 1px solid rgba(255,255,255,0.15); color: var(--subtle);
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* Photo */
+    .photo-wrap { position: relative; width: 380px; height: 380px; margin: 0 auto; }
+    .photo-ring {
+      position: absolute; inset: -14px; border-radius: 50%;
+      background: conic-gradient(from 0deg, #6366f1, #a855f7, #f472b6, #6366f1);
+      animation: spin 8s linear infinite;
+    }
+    .photo-ring::after {
+      content: ''; position: absolute; inset: 4px; border-radius: 50%;
+      background: var(--bg);
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .photo-circle {
+      position: absolute; inset: 0; border-radius: 50%; overflow: hidden;
+    }
+    .photo-circle img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 5.5rem 3rem; }
+    .inner { max-width: 1100px; margin: 0 auto; }
+    .sec-label {
+      display: block; color: var(--accent); font-size: 0.72rem;
+      font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 0.6rem;
+    }
+    .sec-title {
+      font-size: clamp(1.75rem, 3.5vw, 2.5rem); font-weight: 900;
+      letter-spacing: -0.025em; margin-bottom: 0.75rem;
+    }
+    .sec-sub { color: var(--subtle); max-width: 580px; margin: 0 auto; }
+    .sec-header { text-align: center; margin-bottom: 3.5rem; }
+
+    /* ── ABOUT CARDS ── */
+    .about { background: var(--bg2); }
+    .about-bio {
+      background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 20px; padding: 2.5rem; margin-bottom: 3rem;
+      font-size: 1rem; color: var(--subtle); line-height: 1.85;
+    }
+    .about-bio strong { color: var(--white); }
+    .about-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .about-card {
+      background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 18px; padding: 2rem 1.75rem; text-align: center;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .about-card:hover { border-color: var(--accent); transform: translateY(-5px); }
+    .about-card .icon { font-size: 2.75rem; margin-bottom: 1rem; }
+    .about-card h3 { font-size: 1.05rem; font-weight: 800; margin-bottom: 0.5rem; }
+    .about-card p { color: var(--muted); font-size: 0.875rem; }
+
+    /* ── EXPERIENCE ── */
+    .experience { background: var(--bg); }
+    .timeline { max-width: 860px; margin: 0 auto; padding-left: 1.5rem; position: relative; }
+    .timeline::before {
+      content: ''; position: absolute; left: 0; top: 0.5rem; bottom: 0;
+      width: 2px; background: linear-gradient(180deg, #6366f1, #a855f7 60%, transparent);
+    }
+    .t-item { padding-left: 2.5rem; margin-bottom: 2.75rem; position: relative; }
+    .t-item::before {
+      content: ''; position: absolute; left: -5px; top: 0.45rem;
+      width: 12px; height: 12px; border-radius: 50%; background: #6366f1;
+      box-shadow: 0 0 0 4px rgba(99,102,241,0.18), 0 0 0 8px rgba(99,102,241,0.06);
+    }
+    .t-period {
+      color: var(--accent); font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 0.2rem;
+    }
+    .t-role { font-size: 1.05rem; font-weight: 800; margin-bottom: 0.15rem; }
+    .t-company { color: var(--subtle); font-weight: 600; font-size: 0.9rem; margin-bottom: 0.75rem; }
+    .t-bullets { list-style: none; }
+    .t-bullets li {
+      color: var(--muted); font-size: 0.875rem; padding-left: 1.1rem;
+      position: relative; margin-bottom: 0.35rem; line-height: 1.6;
+    }
+    .t-bullets li::before { content: '›'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+
+    /* ── PORTFOLIO ── */
+    .portfolio { background: var(--bg2); }
+    .port-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    .port-card {
+      background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 20px; overflow: hidden; transition: all 0.3s;
+    }
+    .port-card:hover {
+      border-color: var(--accent); transform: translateY(-7px);
+      box-shadow: 0 24px 70px rgba(99,102,241,0.15);
+    }
+    .port-img { width: 100%; aspect-ratio: 16/9; display: block; overflow: hidden; }
+    .port-img svg { width: 100%; height: 100%; display: block; }
+    .port-body { padding: 1.75rem; }
+    .port-cat {
+      color: var(--accent); font-size: 0.7rem; font-weight: 800;
+      letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 0.5rem;
+    }
+    .port-title { font-size: 1.15rem; font-weight: 800; margin-bottom: 0.65rem; }
+    .port-desc { color: var(--muted); font-size: 0.865rem; line-height: 1.75; }
+
+    /* ── SKILLS STRIP ── */
+    .skills { background: var(--bg3); }
+    .skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+    .skill-item {
+      background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px; padding: 1.25rem 1.5rem;
+    }
+    .skill-item span { display: block; color: var(--accent); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.4rem; }
+    .skill-item p { color: var(--subtle); font-size: 0.85rem; }
+
+    /* ── CERTS ── */
+    .certs { background: var(--bg); }
+    .cert-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; }
+    .cert-group {
+      background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px; padding: 1.75rem;
+    }
+    .cert-group h3 {
+      color: var(--accent); font-size: 0.7rem; font-weight: 800;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      margin-bottom: 1rem; padding-bottom: 0.75rem;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .cert-group ul { list-style: none; }
+    .cert-group li { color: var(--muted); font-size: 0.84rem; padding: 0.35rem 0; padding-left: 1.1rem; position: relative; }
+    .cert-group li::before { content: '◆'; position: absolute; left: 0; color: var(--accent); font-size: 0.45rem; top: 0.65rem; }
+
+    /* ── EDU ── */
+    .edu { background: var(--bg2); }
+    .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; max-width: 860px; margin: 0 auto; }
+    .edu-card {
+      background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px; padding: 1.75rem; display: flex; gap: 1.25rem; align-items: flex-start;
+    }
+    .edu-icon { font-size: 2rem; flex-shrink: 0; }
+    .edu-degree { font-weight: 800; margin-bottom: 0.2rem; font-size: 0.975rem; }
+    .edu-school { color: var(--subtle); font-size: 0.875rem; }
+
+    /* ── CONTACT ── */
+    .contact {
+      background: linear-gradient(135deg, rgba(99,102,241,0.08), rgba(168,85,247,0.08)), var(--bg);
+      text-align: center;
+    }
+    .contact-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; margin-top: 2.5rem; }
+    .c-link {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+      color: var(--subtle); padding: 0.75rem 1.85rem; border-radius: 10px;
+      text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: all 0.25s;
+    }
+    .c-link:hover { border-color: var(--accent); color: var(--accent); background: rgba(99,102,241,0.08); }
+
+    footer {
+      background: #020617; text-align: center;
+      padding: 1.75rem; color: var(--muted); font-size: 0.82rem;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero-inner .photo-wrap { order: -1; width: 260px; height: 260px; }
+      .bio-short { max-width: 100%; }
+      .pill-row, .cta-row { justify-content: center; }
+      .about-cards { grid-template-columns: 1fr; }
+      .port-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .cert-grid { grid-template-columns: 1fr; }
+      .edu-grid { grid-template-columns: 1fr; }
+      nav ul { display: none; }
+      nav { padding: 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="logo">Neelofer Hilal</span>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="badge">Product Manager &amp; Innovator</div>
+      <h1>
+        Neelofer<br>
+        <span class="grad">Hilal</span>
+      </h1>
+      <p class="subtitle">Healthcare &amp; AI Product Leader · Podcaster · Philosophy Club Lead</p>
+      <p class="bio-short">
+        10+ years driving enterprise SaaS and IoT platforms across healthcare, genomics, and life sciences.
+        From Smart Hospital platforms to agentic AI — I translate complex human problems into scalable,
+        data-driven product solutions.
+      </p>
+      <div class="pill-row">
+        <span class="pill">Product Strategy</span>
+        <span class="pill">Agentic AI</span>
+        <span class="pill">Healthcare IoT</span>
+        <span class="pill">Genomics</span>
+        <span class="pill">SAFe Agile</span>
+        <span class="pill">Podcaster</span>
+        <span class="pill">Philosophy</span>
+      </div>
+      <div class="cta-row">
+        <a href="#portfolio" class="btn btn-fill">View Portfolio</a>
+        <a href="#contact" class="btn btn-outline">Get In Touch</a>
+      </div>
+    </div>
+    <div class="photo-wrap">
+      <div class="photo-ring"></div>
+      <div class="photo-circle">
+        <img src="neelofer-photo.jpg" alt="Neelofer Hilal"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div style="display:none; width:100%; height:100%; background:linear-gradient(135deg,#1e1b4b,#312e81); align-items:center; justify-content:center; font-size:5rem; font-weight:900; color:#818cf8; letter-spacing:-0.05em;">NH</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="inner">
+    <div class="sec-header">
+      <span class="sec-label">About Me</span>
+      <h2 class="sec-title">Builder. Thinker. Connector.</h2>
+    </div>
+    <div class="about-bio">
+      I am a <strong>Product Manager with 10+ years of experience</strong> driving enterprise SaaS and IoT platforms
+      across healthcare, genomics, and life sciences organizations. I have a demonstrated track record of leading
+      smart hospital and clinical data platforms, integrating <strong>Location AI, predictive analytics,</strong> and
+      data-driven decision support into real-world healthcare operations.
+      <br><br>
+      My academic foundation — an <strong>M.S. in Medical Informatics from Rutgers</strong> paired with a B.S. in Nutrition
+      and Biology — gives me a rare ability to bridge the clinical and the technological. I've built on that with
+      advanced work in <strong>Agentic AI Product Management, applied ML, and large-scale SaaS platform design</strong>.
+      <br><br>
+      Beyond product work, I host a <strong>podcast</strong> exploring the intersection of technology, human potential, and
+      modern life. I also serve as the <strong>Community Lead of a Philosophy Club</strong>, where I facilitate
+      conversations on ethics, consciousness, and the nature of decision-making — themes that deeply inform how I
+      approach product thinking.
+    </div>
+    <div class="about-cards">
+      <div class="about-card">
+        <div class="icon">🎙️</div>
+        <h3>Podcaster</h3>
+        <p>Exploring the intersection of technology, human potential, and modern life through in-depth conversations.</p>
+      </div>
+      <div class="about-card">
+        <div class="icon">🏛️</div>
+        <h3>Philosophy Club Lead</h3>
+        <p>Community Lead facilitating discussions on ethics, consciousness, decision-making, and the examined life.</p>
+      </div>
+      <div class="about-card">
+        <div class="icon">🚀</div>
+        <h3>AI Product Manager</h3>
+        <p>Certified in Agentic AI PM, building products at the frontier of healthcare, genomics, and intelligent systems.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience" id="experience">
+  <div class="inner">
+    <div class="sec-header">
+      <span class="sec-label">Career</span>
+      <h2 class="sec-title">Professional Experience</h2>
+    </div>
+    <div class="timeline">
+
+      <div class="t-item">
+        <div class="t-period">Sep 2025 – Jan 2026</div>
+        <div class="t-role">Software Product Manager</div>
+        <div class="t-company">Cognosos | Smart Hospital Platform (Remote) · Acquired Prosight</div>
+        <ul class="t-bullets">
+          <li>Led product strategy post-acquisition, aligning design, engineering, and QA to scale the SaaS IoT platform.</li>
+          <li>Worked directly with Cognosos' Location AI model to improve real-time asset, staff, and patient location detection in complex hospital environments.</li>
+          <li>Drove backlog ownership and prioritization with engineering leadership to accelerate high-impact releases.</li>
+          <li>Supported go-to-market initiatives and customer focus groups, improving time-to-market and release predictability.</li>
+        </ul>
+      </div>
+
+      <div class="t-item">
+        <div class="t-period">Oct 2021 – Sep 2025</div>
+        <div class="t-role">Senior Software Product Owner</div>
+        <div class="t-company">Cox Prosight | Smart Hospital Platform (Healthcare RTLS Leader) · Atlanta, GA</div>
+        <ul class="t-bullets">
+          <li>Owned end-to-end product backlog and roadmap for a SaaS IoT Smart Hospital platform serving enterprise healthcare clients.</li>
+          <li>Led implementation of predictive analytics using Power BI and Google BigQuery to surface operational insights for hospital administrators.</li>
+          <li>Partnered with engineering and data teams to define data models and scalable reporting pipelines.</li>
+          <li>Produced product documentation, training materials, marketing collateral, and wireframes validated through customer focus groups.</li>
+        </ul>
+      </div>
+
+      <div class="t-item">
+        <div class="t-period">Sep 2020 – Oct 2021</div>
+        <div class="t-role">Software Product Owner</div>
+        <div class="t-company">Cox Prosight | Smart Hospital Platform · Atlanta, GA</div>
+        <ul class="t-bullets">
+          <li>Founding Product Owner for the Smart Hospital platform — built connected-device and advanced analytics solutions to optimize hospital operations.</li>
+          <li>Translated business and user needs into epics, features, and user stories in Jira; managed end-to-end delivery.</li>
+          <li>Led cross-functional execution with engineering, QA, UX, and stakeholders to deliver user-centered solutions.</li>
+        </ul>
+      </div>
+
+      <div class="t-item">
+        <div class="t-period">Mar 2019 – Sep 2020</div>
+        <div class="t-role">Product Manager II</div>
+        <div class="t-company">Natera | Panorama Non-invasive Prenatal Testing (Genomics Leader) · San Carlos, CA</div>
+        <ul class="t-bullets">
+          <li>Led cross-functional process improvement for the Prenatal Testing reporting workflow, reducing report turnaround time.</li>
+          <li>Partnered with data science to incorporate ML-based predictive analytics for earlier prenatal risk scoring.</li>
+          <li>Enabled automated prioritization and routing of high-risk reports to genetic counselors for faster clinical review.</li>
+          <li>Delivered interoperable solutions across LIMS, EMRs, and patient-facing systems using HL7 and EDI standards.</li>
+        </ul>
+      </div>
+
+      <div class="t-item">
+        <div class="t-period">Feb 2018 – Jan 2019</div>
+        <div class="t-role">Business Analyst, Clinical Information &amp; Analytics | Product Owner Proxy</div>
+        <div class="t-company">Healthfirst LLC (Healthcare Insurer for New Yorkers) · New York, NY</div>
+        <ul class="t-bullets">
+          <li>Served as Product Owner proxy for Enterprise Delivery Services, managing backlog and feature prioritization.</li>
+          <li>Built predictive analytics dashboards in Tableau to support Utilization Management workflows.</li>
+          <li>Supported EDI implementation via HL7 interfaces for seamless data flow between applications and EMR systems.</li>
+        </ul>
+      </div>
+
+      <div class="t-item">
+        <div class="t-period">Sep 2021 – Dec 2021</div>
+        <div class="t-role">LIMS Business Analyst</div>
+        <div class="t-company">Eurofins DiscoveryX LLC (Drug Discovery Leader) · San Diego, CA</div>
+        <ul class="t-bullets">
+          <li>Supported digital transformation initiatives, managing the transition to a new LIMS platform.</li>
+          <li>Facilitated integration of advanced IT solutions into laboratory workflows to accelerate drug discovery research.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="portfolio" id="portfolio">
+  <div class="inner">
+    <div class="sec-header">
+      <span class="sec-label">Product Portfolio</span>
+      <h2 class="sec-title">What I've Built &amp; Designed</h2>
+      <p class="sec-sub">A selection of product concepts, features, and agentic AI solutions spanning healthcare, neurotechnology, and human psychology.</p>
+    </div>
+    <div class="port-grid">
+
+      <!-- Card 1: Inner Council AI -->
+      <div class="port-card">
+        <div class="port-img">
+          <svg viewBox="0 0 560 315" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="bg1" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#1e1b4b"/>
+                <stop offset="100%" stop-color="#0a0f1e"/>
+              </radialGradient>
+              <filter id="glow1">
+                <feGaussianBlur stdDeviation="3" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+            <rect width="560" height="315" fill="url(#bg1)"/>
+            <!-- Outer ring -->
+            <circle cx="280" cy="157" r="110" fill="none" stroke="rgba(129,140,248,0.15)" stroke-width="1" stroke-dasharray="6 4"/>
+            <circle cx="280" cy="157" r="78" fill="none" stroke="rgba(192,132,252,0.12)" stroke-width="1"/>
+            <!-- Connection lines -->
+            <line x1="280" y1="157" x2="280" y2="47"  stroke="rgba(129,140,248,0.4)" stroke-width="1.5"/>
+            <line x1="280" y1="157" x2="384" y2="210" stroke="rgba(192,132,252,0.4)" stroke-width="1.5"/>
+            <line x1="280" y1="157" x2="340" y2="267" stroke="rgba(244,114,182,0.4)" stroke-width="1.5"/>
+            <line x1="280" y1="157" x2="220" y2="267" stroke="rgba(251,191,36,0.4)"  stroke-width="1.5"/>
+            <line x1="280" y1="157" x2="176" y2="210" stroke="rgba(52,211,153,0.4)"  stroke-width="1.5"/>
+            <!-- Center: Self -->
+            <circle cx="280" cy="157" r="34" fill="rgba(99,102,241,0.25)" stroke="#818cf8" stroke-width="2" filter="url(#glow1)"/>
+            <text x="280" y="152" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="700" font-family="sans-serif">SELF</text>
+            <text x="280" y="165" text-anchor="middle" fill="#818cf8" font-size="7.5" font-family="sans-serif">(Integrator)</text>
+            <!-- Archetype nodes -->
+            <circle cx="280" cy="47"  r="22" fill="rgba(192,132,252,0.2)" stroke="#c084fc" stroke-width="1.5"/>
+            <text x="280" y="43"  text-anchor="middle" fill="#e9d5ff" font-size="7.5" font-weight="700" font-family="sans-serif">PERSONA</text>
+            <text x="280" y="55"  text-anchor="middle" fill="#a78bfa" font-size="6.5" font-family="sans-serif">Public Face</text>
+
+            <circle cx="384" cy="210" r="22" fill="rgba(244,114,182,0.2)" stroke="#f472b6" stroke-width="1.5"/>
+            <text x="384" y="206" text-anchor="middle" fill="#fce7f3" font-size="7.5" font-weight="700" font-family="sans-serif">SHADOW</text>
+            <text x="384" y="218" text-anchor="middle" fill="#f9a8d4" font-size="6.5" font-family="sans-serif">Hidden Self</text>
+
+            <circle cx="340" cy="267" r="22" fill="rgba(251,191,36,0.2)" stroke="#fbbf24" stroke-width="1.5"/>
+            <text x="340" y="263" text-anchor="middle" fill="#fef3c7" font-size="7.5" font-weight="700" font-family="sans-serif">HERO</text>
+            <text x="340" y="275" text-anchor="middle" fill="#fcd34d" font-size="6.5" font-family="sans-serif">Courage</text>
+
+            <circle cx="220" cy="267" r="22" fill="rgba(52,211,153,0.2)" stroke="#34d399" stroke-width="1.5"/>
+            <text x="220" y="263" text-anchor="middle" fill="#d1fae5" font-size="7.5" font-weight="700" font-family="sans-serif">ANIMA</text>
+            <text x="220" y="275" text-anchor="middle" fill="#6ee7b7" font-size="6.5" font-family="sans-serif">Inner Voice</text>
+
+            <circle cx="176" cy="210" r="22" fill="rgba(251,146,60,0.2)" stroke="#fb923c" stroke-width="1.5"/>
+            <text x="176" y="206" text-anchor="middle" fill="#ffedd5" font-size="7.5" font-weight="700" font-family="sans-serif">SAGE</text>
+            <text x="176" y="218" text-anchor="middle" fill="#fdba74" font-size="6.5" font-family="sans-serif">Wisdom</text>
+
+            <!-- Label -->
+            <text x="280" y="308" text-anchor="middle" fill="rgba(148,163,184,0.6)" font-size="9" font-family="sans-serif" letter-spacing="0.1em">AGENTIC · JUNGIAN · MULTI-PERSPECTIVE REASONING</text>
+          </svg>
+        </div>
+        <div class="port-body">
+          <div class="port-cat">Agentic AI · Mental Wellness · PRD</div>
+          <div class="port-title">Inner Council AI</div>
+          <div class="port-desc">An agentic reflection and decision-support tool that resolves personal and professional dilemmas by deploying five Jungian archetypal AI agents — Persona, Shadow, Hero, Anima, and Self — to reason in parallel and synthesize integrated clarity. Freemium model at $10–15/month.</div>
+        </div>
+      </div>
+
+      <!-- Card 2: BrainWave -->
+      <div class="port-card">
+        <div class="port-img">
+          <svg viewBox="0 0 560 315" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#0a1628"/>
+                <stop offset="100%" stop-color="#0d1f3c"/>
+              </linearGradient>
+              <linearGradient id="wave1" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="rgba(99,102,241,0)"/>
+                <stop offset="30%" stop-color="#6366f1"/>
+                <stop offset="70%" stop-color="#a855f7"/>
+                <stop offset="100%" stop-color="rgba(168,85,247,0)"/>
+              </linearGradient>
+              <linearGradient id="wave2" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="rgba(52,211,153,0)"/>
+                <stop offset="30%" stop-color="#34d399"/>
+                <stop offset="70%" stop-color="#10b981"/>
+                <stop offset="100%" stop-color="rgba(16,185,129,0)"/>
+              </linearGradient>
+              <linearGradient id="wave3" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="rgba(251,191,36,0)"/>
+                <stop offset="30%" stop-color="#fbbf24"/>
+                <stop offset="70%" stop-color="#f59e0b"/>
+                <stop offset="100%" stop-color="rgba(245,158,11,0)"/>
+              </linearGradient>
+            </defs>
+            <rect width="560" height="315" fill="url(#bg2)"/>
+            <!-- Grid lines -->
+            <line x1="0" y1="78"  x2="560" y2="78"  stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+            <line x1="0" y1="157" x2="560" y2="157" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+            <line x1="0" y1="236" x2="560" y2="236" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+            <line x1="140" y1="0" x2="140" y2="315" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+            <line x1="280" y1="0" x2="280" y2="315" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+            <line x1="420" y1="0" x2="420" y2="315" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+
+            <!-- Delta wave (slow, large) -->
+            <path d="M0,157 C35,157 35,90 70,90 C105,90 105,224 140,224 C175,224 175,90 210,90 C245,90 245,224 280,224 C315,224 315,90 350,90 C385,90 385,224 420,224 C455,224 455,90 490,90 C525,90 525,157 560,157"
+              fill="none" stroke="url(#wave1)" stroke-width="2.5" opacity="0.7"/>
+
+            <!-- Alpha wave (medium) -->
+            <path d="M0,157 C17,157 17,117 34,117 C51,117 51,197 68,197 C85,197 85,117 102,117 C119,117 119,197 136,197 C153,197 153,117 170,117 C187,117 187,197 204,197 C221,197 221,117 238,117 C255,117 255,197 272,197 C289,197 289,117 306,117 C323,117 323,197 340,197 C357,197 357,117 374,117 C391,117 391,197 408,197 C425,197 425,117 442,117 C459,117 459,197 476,197 C493,197 493,117 510,117 C527,117 527,157 560,157"
+              fill="none" stroke="url(#wave2)" stroke-width="2" opacity="0.6"/>
+
+            <!-- Gamma wave (fast, small) -->
+            <path d="M0,157 C7,157 7,137 14,137 C21,137 21,177 28,177 C35,177 35,137 42,137 C49,137 49,177 56,177 C63,177 63,137 70,137 C77,137 77,177 84,177 C91,177 91,137 98,137 C105,137 105,177 112,177 C119,177 119,137 126,137 C133,137 133,177 140,177 C147,177 147,137 154,137 C161,137 161,177 168,177 C175,177 175,137 182,137 C189,137 189,177 196,177 C203,177 203,137 210,137 C217,137 217,177 224,177 C231,177 231,137 238,137 C245,137 245,177 252,177 C259,177 259,137 266,137 C273,137 273,177 280,177 C287,177 287,137 294,137 C301,137 301,177 308,177 C315,177 315,137 322,137 C329,137 329,177 336,177 C343,177 343,137 350,137 C357,137 357,177 364,177 C371,177 371,137 378,137 C385,137 385,177 392,177 C399,177 399,137 406,137 C413,137 413,177 420,177 C427,177 427,137 434,137 C441,137 441,177 448,177 C455,177 455,137 462,137 C469,137 469,177 476,177 C483,177 483,137 490,137 C497,137 497,177 504,177 C511,177 511,137 518,137 C525,137 525,157 560,157"
+              fill="none" stroke="url(#wave3)" stroke-width="1.5" opacity="0.5"/>
+
+            <!-- EEG dots -->
+            <circle cx="70"  cy="90"  r="4" fill="#6366f1" opacity="0.9"/>
+            <circle cx="140" cy="224" r="4" fill="#6366f1" opacity="0.9"/>
+            <circle cx="210" cy="90"  r="4" fill="#a855f7" opacity="0.9"/>
+            <circle cx="280" cy="224" r="4" fill="#a855f7" opacity="0.9"/>
+            <circle cx="350" cy="90"  r="4" fill="#6366f1" opacity="0.9"/>
+            <circle cx="420" cy="224" r="4" fill="#6366f1" opacity="0.9"/>
+            <circle cx="490" cy="90"  r="4" fill="#a855f7" opacity="0.9"/>
+
+            <!-- Legend -->
+            <rect x="30" y="28" width="8" height="8" rx="2" fill="#6366f1"/>
+            <text x="44" y="36" fill="rgba(148,163,184,0.7)" font-size="9" font-family="sans-serif">Delta / Alpha</text>
+            <rect x="120" y="28" width="8" height="8" rx="2" fill="#34d399"/>
+            <text x="134" y="36" fill="rgba(148,163,184,0.7)" font-size="9" font-family="sans-serif">Theta</text>
+            <rect x="185" y="28" width="8" height="8" rx="2" fill="#fbbf24"/>
+            <text x="199" y="36" fill="rgba(148,163,184,0.7)" font-size="9" font-family="sans-serif">Gamma</text>
+
+            <!-- Title overlay -->
+            <text x="280" y="295" text-anchor="middle" fill="rgba(148,163,184,0.5)" font-size="9" font-family="sans-serif" letter-spacing="0.12em">EEG NEUROFEEDBACK · BRAINWAVE COACHING PLATFORM</text>
+          </svg>
+        </div>
+        <div class="port-body">
+          <div class="port-cat">Neurotechnology · Product Leadership · 2020</div>
+          <div class="port-title">BrainWave with Neurable</div>
+          <div class="port-desc">EEG-powered wearable + software platform that reads real-time brainwave states (Delta, Alpha, Theta, Beta, Gamma) and acts as a neurofeedback coach — guiding professionals and mindfulness enthusiasts to achieve their desired mental states. TAM: $295M VR/wearable market.</div>
+        </div>
+      </div>
+
+      <!-- Card 3: Genetic Testing -->
+      <div class="port-card">
+        <div class="port-img">
+          <svg viewBox="0 0 560 315" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#0a0f1e"/>
+                <stop offset="100%" stop-color="#0f1928"/>
+              </linearGradient>
+            </defs>
+            <rect width="560" height="315" fill="url(#bg3)"/>
+
+            <!-- DNA Helix left strand -->
+            <path d="M200,20 C230,50 230,80 200,110 C170,140 170,170 200,200 C230,230 230,260 200,295"
+              fill="none" stroke="#6366f1" stroke-width="3" stroke-linecap="round"/>
+            <!-- DNA Helix right strand -->
+            <path d="M360,20 C330,50 330,80 360,110 C390,140 390,170 360,200 C330,230 330,260 360,295"
+              fill="none" stroke="#a855f7" stroke-width="3" stroke-linecap="round"/>
+
+            <!-- Base pairs -->
+            <line x1="200" y1="20"  x2="360" y2="20"  stroke="rgba(244,114,182,0.7)" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="215" y1="40"  x2="345" y2="40"  stroke="rgba(52,211,153,0.7)"  stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="228" y1="60"  x2="332" y2="60"  stroke="rgba(251,191,36,0.7)"  stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="232" y1="80"  x2="328" y2="80"  stroke="rgba(244,114,182,0.7)" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="225" y1="100" x2="335" y2="100" stroke="rgba(99,102,241,0.7)"  stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="210" y1="120" x2="350" y2="120" stroke="rgba(52,211,153,0.7)"  stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="200" y1="140" x2="360" y2="140" stroke="rgba(251,191,36,0.7)"  stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="210" y1="160" x2="350" y2="160" stroke="rgba(244,114,182,0.7)" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="225" y1="180" x2="335" y2="180" stroke="rgba(99,102,241,0.7)"  stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="232" y1="200" x2="328" y2="200" stroke="rgba(52,211,153,0.7)"  stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="228" y1="220" x2="332" y2="220" stroke="rgba(251,191,36,0.7)"  stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="215" y1="240" x2="345" y2="240" stroke="rgba(244,114,182,0.7)" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="200" y1="260" x2="360" y2="260" stroke="rgba(99,102,241,0.7)"  stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="200" y1="280" x2="360" y2="280" stroke="rgba(52,211,153,0.7)"  stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="200" y1="295" x2="360" y2="295" stroke="rgba(251,191,36,0.7)"  stroke-width="2.5" stroke-linecap="round"/>
+
+            <!-- Product labels right side -->
+            <rect x="390" y="60"  width="145" height="22" rx="4" fill="rgba(99,102,241,0.15)" stroke="rgba(99,102,241,0.4)" stroke-width="1"/>
+            <text x="463" y="74" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="700" font-family="sans-serif">CARDIAC DNA INSIGHT</text>
+
+            <rect x="390" y="130" width="145" height="22" rx="4" fill="rgba(192,132,252,0.15)" stroke="rgba(192,132,252,0.4)" stroke-width="1"/>
+            <text x="463" y="144" text-anchor="middle" fill="#d8b4fe" font-size="9" font-weight="700" font-family="sans-serif">MENTAL HEALTH DNA</text>
+
+            <rect x="390" y="200" width="145" height="22" rx="4" fill="rgba(244,114,182,0.15)" stroke="rgba(244,114,182,0.4)" stroke-width="1"/>
+            <text x="463" y="214" text-anchor="middle" fill="#fbcfe8" font-size="9" font-weight="700" font-family="sans-serif">PAIN MEDICATION DNA</text>
+
+            <!-- Connection lines to pairs -->
+            <line x1="360" y1="71"  x2="390" y2="71"  stroke="rgba(99,102,241,0.3)"  stroke-width="1" stroke-dasharray="3 2"/>
+            <line x1="360" y1="141" x2="390" y2="141" stroke="rgba(192,132,252,0.3)" stroke-width="1" stroke-dasharray="3 2"/>
+            <line x1="360" y1="211" x2="390" y2="211" stroke="rgba(244,114,182,0.3)" stroke-width="1" stroke-dasharray="3 2"/>
+
+            <!-- MyChart integration badge -->
+            <rect x="30" y="250" width="140" height="48" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+            <text x="100" y="270" text-anchor="middle" fill="#94a3b8" font-size="8" font-weight="700" font-family="sans-serif">INTEGRATED WITH</text>
+            <text x="100" y="285" text-anchor="middle" fill="#f1f5f9" font-size="11" font-weight="900" font-family="sans-serif">Epic MyChart</text>
+
+            <text x="280" y="308" text-anchor="middle" fill="rgba(148,163,184,0.5)" font-size="9" font-family="sans-serif" letter-spacing="0.1em">PHARMACOGENOMICS · PERSONALIZED MEDICINE</text>
+          </svg>
+        </div>
+        <div class="port-body">
+          <div class="port-cat">Digital Health · Genomics · Product School</div>
+          <div class="port-title">DNA Insights Genetic Testing Feature</div>
+          <div class="port-desc">Pharmacogenomics integration into Epic's MyChart platform, surfacing personalized medication recommendations (Cardiac, Mental Health, Pain) based on each patient's unique genetic profile. Strategy: partnership with Epic Systems to reach 50% of U.S. hospitals via MyChart.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills" id="skills">
+  <div class="inner">
+    <div class="sec-header">
+      <span class="sec-label">Core Competencies</span>
+      <h2 class="sec-title">Skills &amp; Expertise</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-item">
+        <span>Product Strategy</span>
+        <p>Vision and roadmap ownership, portfolio prioritization, executive alignment in fast-scaling environments.</p>
+      </div>
+      <div class="skill-item">
+        <span>AI &amp; Agentic Systems</span>
+        <p>Agentic AI product management, applied ML, LLM integration, data pipeline architecture.</p>
+      </div>
+      <div class="skill-item">
+        <span>Healthcare &amp; IoT</span>
+        <p>Smart Hospital platforms, RTLS, HL7/EDI, LIMS, EMR integration, clinical workflows.</p>
+      </div>
+      <div class="skill-item">
+        <span>Agile &amp; SAFe</span>
+        <p>Certified SAFe Agilist, CSPO, CSM. Backlog ownership, sprint execution, cross-functional delivery.</p>
+      </div>
+      <div class="skill-item">
+        <span>Data &amp; Analytics</span>
+        <p>Power BI, Google BigQuery, Tableau, predictive analytics, operational dashboards.</p>
+      </div>
+      <div class="skill-item">
+        <span>User Research</span>
+        <p>Discovery, wireframing, focus groups, UAT, solution validation, GTM enablement.</p>
+      </div>
+      <div class="skill-item">
+        <span>Genomics &amp; Life Sciences</span>
+        <p>Prenatal testing, pharmacogenomics, LIMS, drug discovery, molecular profiling.</p>
+      </div>
+      <div class="skill-item">
+        <span>Lean Six Sigma</span>
+        <p>Black Belt certified. Process improvement, workflow optimization, quality and delivery metrics.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="edu" id="education">
+  <div class="inner">
+    <div class="sec-header">
+      <span class="sec-label">Education</span>
+      <h2 class="sec-title">Academic Background</h2>
+    </div>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div class="edu-icon">🎓</div>
+        <div>
+          <div class="edu-degree">M.S., Medical Informatics</div>
+          <div class="edu-school">Rutgers University · Newark, NJ</div>
+        </div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-icon">🔬</div>
+        <div>
+          <div class="edu-degree">B.S., Nutrition (Minor: Biology)</div>
+          <div class="edu-school">Rutgers University · New Brunswick, NJ</div>
+        </div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-icon">📋</div>
+        <div>
+          <div class="edu-degree">Product Leadership Certificate</div>
+          <div class="edu-school">Product School</div>
+        </div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-icon">📋</div>
+        <div>
+          <div class="edu-degree">Product Management Certificate</div>
+          <div class="edu-school">Product School</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section class="certs" id="certifications">
+  <div class="inner">
+    <div class="sec-header">
+      <span class="sec-label">Credentials</span>
+      <h2 class="sec-title">Certifications &amp; Accomplishments</h2>
+    </div>
+    <div class="cert-grid">
+      <div class="cert-group">
+        <h3>AI Product Management</h3>
+        <ul>
+          <li>AI for Product Owners — Scrum Alliance (2026)</li>
+          <li>Technical Foundations &amp; AI Prototyping for PMs (Jan–Feb 2026)</li>
+          <li>Agentic AI Product Management Certification (Feb–Mar 2026)</li>
+        </ul>
+      </div>
+      <div class="cert-group">
+        <h3>Harvard Business School Online</h3>
+        <ul>
+          <li>Disruptive Strategy (2020)</li>
+          <li>CORe — Business Analytics, Economics, Financial Accounting (2020)</li>
+          <li>Sustainable Business Strategy (2020)</li>
+        </ul>
+      </div>
+      <div class="cert-group">
+        <h3>Agile &amp; Leadership</h3>
+        <ul>
+          <li>SAFe® DevOps Practitioner — Scaled Agile Inc.</li>
+          <li>SAFe® Product Owner / Product Manager (POPM)</li>
+          <li>SAFe® Advanced Scrum Master (SASM)</li>
+          <li>Certified SAFe® 4.5 Agilist</li>
+          <li>Certified Scrum Product Owner (CSPO) — License 747512</li>
+          <li>Certified Scrum Master (CSM) — License 747512</li>
+          <li>Lean Six Sigma Black Belt — SSGI</li>
+          <li>User Design Experience — General Assembly</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="inner">
+    <span class="sec-label">Let's Connect</span>
+    <h2 class="sec-title">Get In Touch</h2>
+    <p class="sec-sub" style="margin:0 auto;">
+      Open to product leadership opportunities, speaking engagements, podcast collaborations, and philosophy conversations.
+    </p>
+    <div class="contact-links">
+      <a class="c-link" href="https://www.linkedin.com/in/neeloferhilal/" target="_blank">LinkedIn</a>
+      <a class="c-link" href="mailto:amrihil89@gmail.com">Email Me</a>
+      <a class="c-link" href="#portfolio">View Portfolio</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Neelofer Hilal · Product Manager · Podcaster · Philosopher</p>
+</footer>
+
+<script>
+  // Smooth active state on nav
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav ul a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? '#818cf8' : '';
+    });
+  });
+</script>
+
+</body>
+</html>
